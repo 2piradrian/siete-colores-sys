@@ -3,21 +3,21 @@ import useProducts from "@/hooks/useProducts";
 import SearchForm from "@/components/SearchForm/SearchForm";
 import Title from "@/components/Title/Title";
 import ProductTable from "@/components/ProductTable/ProductTable";
-import style from "./style.module.css";
 import UpdateForm from "@/components/UpdateForm/UpdateForm";
 import CreateForm from "@/components/CreateForm/CreateForm";
+import style from "./style.module.css";
 
 function ProductSection() {
-	const { products, setSearch, getProductById, updateProduct, createProduct, deleteProduct } =
+	const { products, setSearch, getProductByCode, updateProduct, createProduct, deleteProduct } =
 		useProducts();
 
 	const [openUpdate, setOpenUpdate] = useState(false);
 	const [openCreate, setOpenCreate] = useState(false);
-	const [id, setId] = useState("");
+	const [code, setCode] = useState("");
 
-	const handleForm = (id: string) => {
+	const handleForm = (code: string) => {
 		setOpenUpdate(true);
-		setId(id);
+		setCode(code);
 	};
 
 	return (
@@ -31,18 +31,18 @@ function ProductSection() {
 			</div>
 			{openUpdate && (
 				<UpdateForm
-					id={id}
+					code={code}
 					setOpen={setOpenUpdate}
-					getProductById={getProductById}
+					getProductByCode={getProductByCode}
 					updateProduct={updateProduct}
 					deleteProduct={deleteProduct}
 				/>
 			)}
 			{openCreate && (
 				<CreateForm
-					id={id}
+					code={code}
 					setOpen={setOpenCreate}
-					getProductById={getProductById}
+					getProductByCode={getProductByCode}
 					createProduct={createProduct}
 				/>
 			)}

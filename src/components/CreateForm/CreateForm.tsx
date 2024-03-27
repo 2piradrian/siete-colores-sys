@@ -1,39 +1,40 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import style from "./style.module.css";
-import { Product, ProductForm } from "@/types/types";
+import { Product } from "@/types/types";
 import CreateInputs from "./CreateInputs";
 
 type Props = {
-	id: string;
+	code: string;
 	setOpen: (open: boolean) => void;
-	getProductById: (id: string) => Promise<Product | null>;
-	createProduct: (product: ProductForm) => Promise<Product | null>;
+	getProductByCode: (id: string) => Promise<Product | null>;
+	createProduct: (product: Product) => Promise<Product | null>;
 };
 
-function CreateForm({ id, setOpen, getProductById, createProduct }: Props) {
+function CreateForm({ code, setOpen, getProductByCode, createProduct }: Props) {
 	const [product, setProduct] = useState<Product | undefined>(undefined);
 
 	useEffect(() => {
 		const fetchProduct = async () => {
-			const fetchedProduct = await getProductById(id);
+			const fetchedProduct = await getProductByCode(code);
 			if (fetchedProduct !== null) {
 				setProduct(fetchedProduct);
 			}
 		};
 
 		fetchProduct();
-	}, [getProductById, id]);
+	}, [getProductByCode, code]);
 
 	const handleUpdate = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setOpen(false);
+
 		const productData = Object.fromEntries(new FormData(e.currentTarget));
 		createProduct({
 			code: productData.code.toString(),
 			name: productData.name.toString(),
-			type: productData.type.toString(),
+			category: productData.type.toString(),
 			size: productData.size.toString(),
-			weight: parseInt(productData.weight.toString()),
+			price: parseFloat(productData.price.toString()),
 		});
 	};
 

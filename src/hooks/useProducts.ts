@@ -1,5 +1,6 @@
-import { Product, ProductForm } from "@/types/types";
-import axios, { AxiosResponse } from "axios";
+import { instance } from "@/adapters/instance";
+import { Product } from "@/types/types";
+import { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 
 function useProducts() {
@@ -7,28 +8,16 @@ function useProducts() {
 	const [search, setSearch] = useState<string>("");
 	const [loading, setLoading] = useState(true);
 
-	const instance = axios.create({
-		baseURL: "http://localhost:3333/products",
-	});
-
 	const fetchProducts = async () => {
 		try {
-			const response: AxiosResponse<Product[]> = await instance.get("");
-			// sort by code
-			response.data.sort((a, b) => {
-				if (a.code < b.code) {
-					return -1;
-				}
-				if (a.code > b.code) {
-					return 1;
-				}
-				return 0;
-			});
-			setProducts(response.data || []);
+			const response: AxiosResponse<Product[]> = await instance.get("/products/get-all");
+
 			return response.data || [];
-		} catch (error) {
+		} 
+		catch (error) {
 			alert("Error al cargar los productos: " + error);
-		} finally {
+		} 
+		finally {
 			setLoading(false);
 		}
 	};
@@ -48,10 +37,10 @@ function useProducts() {
 	}, [search]);
 
 	useEffect(() => {
-		fetchProducts();
+		fetchProducts().then((data) => setProducts(data || []));
 	}, []);
 
-	const getProductById = async (id: string): Promise<Product | null> => {
+	const getProductByCode = async (id: string): Promise<Product | null> => {
 		try {
 			const response: AxiosResponse<Product> = await instance.get(id);
 			return response.data;
@@ -61,8 +50,8 @@ function useProducts() {
 		}
 	};
 
-	const createProduct = async (product: ProductForm): Promise<Product | null> => {
-		if (!product.name || !product.code || !product.size || !product.weight || !product.type) {
+	const createProduct = async (product: Product): Promise<Product | null> => {
+		if (!product.name || !product.code || !product.size || !product.category) {
 			alert("Rellena todos los campos");
 			return null;
 		}
@@ -82,13 +71,13 @@ function useProducts() {
 		}
 	};
 
-	const updateProduct = async (id: string, product: ProductForm): Promise<Product | null> => {
-		if (!product.name || !product.code || !product.size || !product.weight || !product.type) {
+	const updateProduct = async (product: Product): Promise<Product | null> => {
+		if (!product.name || !product.code || !product.size || !product.category) {
 			alert("Rellena todos los campos");
 			return null;
 		}
 		try {
-			const response: AxiosResponse<Product> = await instance.put(id, product);
+			const response: AxiosResponse<Product> = await instance.put("", product);
 			await fetchProducts();
 			return response.data;
 		} catch (error) {
@@ -112,7 +101,7 @@ function useProducts() {
 		setSearch,
 		products,
 		loading,
-		getProductById,
+		getProductByCode,
 		createProduct,
 		updateProduct,
 		deleteProduct,

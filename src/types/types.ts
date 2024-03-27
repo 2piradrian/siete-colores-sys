@@ -14,21 +14,10 @@ export type Budget = {
 	total: number;
 };
 
-/* From backend */
 export type Product = {
-	id: string;
 	code: string;
 	name: string;
-	type: string;
+	category: string;
 	size: string;
-	weight: number;
-};
-
-/* To edit backend */
-export type ProductForm = {
-	code: string;
-	name: string;
-	type: string;
-	size: string;
-	weight: number;
+	price: number;
 };
