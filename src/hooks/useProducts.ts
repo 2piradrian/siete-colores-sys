@@ -40,12 +40,12 @@ function useProducts() {
 		fetchProducts().then((data) => setProducts(data || []));
 	}, []);
 
-	const getProductByCode = async (id: string): Promise<Product | null> => {
+	const getProductByCode = async (code: string): Promise<Product | null> => {
 		try {
-			const response: AxiosResponse<Product> = await instance.get(id);
+			const response: AxiosResponse<Product> = await instance.get("/products/get-by-code?code=" + code);
 			return response.data;
 		} catch (error) {
-			alert("Error encontrando el producto con el id: " + id);
+			alert("Error encontrando el producto con el código: " + code);
 			return null;
 		}
 	};

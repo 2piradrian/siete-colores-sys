@@ -8,8 +8,7 @@ import CreateForm from "@/components/CreateForm/CreateForm";
 import style from "./style.module.css";
 
 function ProductSection() {
-	const { products, setSearch, getProductByCode, updateProduct, createProduct, deleteProduct } =
-		useProducts();
+	const { products, setSearch, getProductByCode, updateProduct, createProduct, deleteProduct } = useProducts();
 
 	const [openUpdate, setOpenUpdate] = useState(false);
 	const [openCreate, setOpenCreate] = useState(false);

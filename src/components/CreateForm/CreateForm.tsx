@@ -11,18 +11,6 @@ type Props = {
 };
 
 function CreateForm({ code, setOpen, getProductByCode, createProduct }: Props) {
-	const [product, setProduct] = useState<Product | undefined>(undefined);
-
-	useEffect(() => {
-		const fetchProduct = async () => {
-			const fetchedProduct = await getProductByCode(code);
-			if (fetchedProduct !== null) {
-				setProduct(fetchedProduct);
-			}
-		};
-
-		fetchProduct();
-	}, [getProductByCode, code]);
 
 	const handleUpdate = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -43,13 +31,9 @@ function CreateForm({ code, setOpen, getProductByCode, createProduct }: Props) {
 			<form className={style.form} onSubmit={handleUpdate}>
 				<div className={style.title}>
 					<h2>Crear producto</h2>
-					<p>
-						¡Atención, para llevar un mejor control, es preferible que crees un producto
-						nuevo en lugar de editar los existentes!
-					</p>
 				</div>
 				<div className={style.inputs}>
-					{product && <CreateInputs product={product} setOpen={setOpen} />}
+					<CreateInputs setOpen={setOpen} />
 				</div>
 			</form>
 		</div>
