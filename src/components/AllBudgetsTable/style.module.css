@@ -1,0 +1,28 @@
+.budgetsTable {
+	width: 80%;
+	border-collapse: collapse;
+}
+
+.tableHeader {
+	background-color: var(--main);
+	font-weight: bold;
+	padding: 8px;
+	text-align: left;
+}
+
+.tableCell {
+	padding: 8px;
+	border-bottom: 1px solid #ccc;
+}
+
+.tableRow {
+	height: 45px;
+	transition: all 0.3s ease;
+	cursor: pointer;
+}
+
+.tableRow:hover {
+	transform: scale(1.02);
+	font-weight: 700;
+	position: relative;
+}

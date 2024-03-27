@@ -1,0 +1,28 @@
+.productContainer {
+	height: auto;
+	width: 90%;
+	padding: 0px 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0px;
+}
+
+.createButton {
+	height: 50px;
+	width: 50px;
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	background-color: var(--main);
+	color: var(--white);
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	font-size: 32px;
+	/* shadows */
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+}

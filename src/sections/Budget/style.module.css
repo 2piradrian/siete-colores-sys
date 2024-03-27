@@ -1,0 +1,60 @@
+.tablecontainer {
+	height: 65vh;
+	width: 100%;
+	max-width: 800px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	position: relative;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+}
+
+.input {
+	width: 200px;
+	height: 40px;
+	padding: 10px;
+	border-radius: 8px;
+	outline: none;
+	border: 0px;
+	margin: 10px;
+	border: 2px solid var(--main);
+}
+
+.button {
+	width: 200px;
+	height: 40px;
+	padding: 10px;
+	border-radius: 8px;
+	outline: none;
+	border: 0px;
+	margin: 10px;
+	background-color: var(--main);
+	border: 2px solid var(--main);
+	cursor: pointer;
+}
+
+.total {
+	font-size: 28px;
+	font-weight: 700;
+	margin: 10px;
+}
+
+.createButton {
+	height: 50px;
+	width: 50px;
+	position: fixed;
+	bottom: 25px;
+	right: 25px;
+	background-color: var(--main);
+	color: var(--white);
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	font-size: 32px;
+	/* shadows */
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+}

@@ -1,0 +1,65 @@
+.tableContainer {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: var(--background);
+	overflow: scroll;
+	padding: 50px 0px;
+	z-index: 9999;
+}
+
+.tableContainer > p {
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: var(--text);
+}
+
+.tablediv table {
+	width: 80vw;
+	margin: 20px 0px;
+	position: initial;
+}
+
+.tablediv th {
+	position: initial;
+	top: initial;
+}
+
+.button {
+	width: 200px;
+	height: 40px;
+	padding: 10px;
+	border-radius: 8px;
+	outline: none;
+	border: 0px;
+	margin: 10px;
+	background-color: var(--main);
+	border: 2px solid var(--main);
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@media print {
+	.tableContainer {
+		padding: 50px 20px;
+		justify-content: flex-start;
+		page-break-after: always;
+		overflow: visible;
+	}
+	.button {
+		display: none;
+	}
+	.total {
+		margin: 50px 30px;
+	}
+	@page {
+		size: A4;
+		margin: 200mm 0;
+	}
+}

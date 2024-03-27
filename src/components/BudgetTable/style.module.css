@@ -1,0 +1,37 @@
+.productTable {
+	width: 98%;
+	border-collapse: collapse;
+	position: absolute;
+	user-select: none;
+}
+
+.tableHeader {
+	background-color: var(--main);
+	font-weight: bold;
+	padding: 8px;
+	font-size: 14px;
+	text-align: left;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	user-select: none;
+}
+
+.tableCell {
+	padding: 8px;
+	border-bottom: 1px solid #ccc;
+}
+
+.tableRow {
+	height: 45px;
+	font-size: 13px;
+	transition: all 0.3s ease;
+	cursor: pointer;
+	user-select: none;
+}
+
+.tableRow:hover {
+	transform: scale(1.02);
+	font-weight: 700;
+	position: relative;
+}

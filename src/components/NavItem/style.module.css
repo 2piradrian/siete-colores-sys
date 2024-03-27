@@ -1,0 +1,57 @@
+.route {
+	width: 100%;
+	padding: 30px 0px;
+	border-radius: 12px 0px 0px 12px;
+	height: 40px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 20px;
+	cursor: pointer;
+	color: var(--background);
+	text-decoration: none;
+	transition: all 400ms ease-in-out;
+}
+
+.route > p {
+	transition: all 400ms ease-in-out;
+}
+
+.active {
+	background: var(--background);
+	margin-left: 15px;
+}
+
+.active > p {
+	color: var(--contrast);
+}
+
+.inactive > p {
+	color: var(--background);
+}
+
+.active > .icon > svg {
+	color: var(--contrast);
+}
+
+.inactive > .icon > svg {
+	color: var(--background);
+}
+
+.icon svg {
+	height: 100%;
+	font-size: 20px;
+	/* color: var(--addornOn); */
+}
+.route > p {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.icon {
+	height: 35px;
+	min-width: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

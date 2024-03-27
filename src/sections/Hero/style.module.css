@@ -1,0 +1,30 @@
+.h1 {
+	font-size: 58px;
+}
+
+.h3 {
+	margin: 10px;
+}
+
+.buttonContainer {
+	margin: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.button {
+	width: 200px;
+	border-radius: 12px;
+	background-color: var(--main);
+	border: none;
+	color: var(--contrast);
+	padding: 15px 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+}
