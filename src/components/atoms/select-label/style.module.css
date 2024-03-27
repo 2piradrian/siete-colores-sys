@@ -6,7 +6,7 @@
 	justify-content: center;
 }
 
-.container > input {
+.container > select {
 	width: 300px;
 	height: 40px;
 	border-radius: 5px;
@@ -16,11 +16,11 @@
 	padding: 0 10px;
 }
 
-.container > input:focus {
+.container > select:focus {
 	border: 4px solid var(--main);
 }
 
-.container > input::placeholder {
+.container > select::placeholder {
 	font-size: 15px;
 	font-weight: 500;
 }

@@ -1,6 +1,6 @@
 import { categories } from "@/data/categories";
 
-export default function Categories(){
+export default function ProductCategories(){
     	
 	return (
         <>

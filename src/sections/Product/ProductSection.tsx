@@ -6,6 +6,7 @@ import ProductTable from "@/components/ProductTable/ProductTable";
 import UpdateForm from "@/components/UpdateForm/UpdateForm";
 import CreateForm from "@/components/CreateForm/CreateForm";
 import style from "./style.module.css";
+import ProductForm from "@/components/molecules/product-form/product-form";
 
 function ProductSection() {
 	const { products, setSearch, getProductByCode, updateProduct, createProduct, deleteProduct } = useProducts();
@@ -28,22 +29,17 @@ function ProductSection() {
 					<ProductTable products={products} onClick={handleForm} isComplete />
 				)}
 			</div>
-			{openUpdate && (
-				<UpdateForm
+			{(openUpdate) && (
+				{/* <UpdateForm
 					code={code}
 					setOpen={setOpenUpdate}
 					getProductByCode={getProductByCode}
 					updateProduct={updateProduct}
 					deleteProduct={deleteProduct}
-				/>
+				/> */}
 			)}
 			{openCreate && (
-				<CreateForm
-					code={code}
-					setOpen={setOpenCreate}
-					getProductByCode={getProductByCode}
-					createProduct={createProduct}
-				/>
+				<ProductForm empty setOpen={setOpenCreate} />
 			)}
 			<div className={style.createButton} onClick={() => setOpenCreate(true)}>
 				+

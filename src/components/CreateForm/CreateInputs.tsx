@@ -1,4 +1,4 @@
-import Categories from "../atoms/product-categories/categories";
+import Categories from "../atoms/product-categories/product-categories";
 import style from "./style.module.css";
 
 type Props = {
