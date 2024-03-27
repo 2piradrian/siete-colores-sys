@@ -13,18 +13,67 @@ type Props = {
 export default function ProductForm({ empty, setOpen }: Props) {
     const [formData, setFormData] = useState<Product>({code: "", name: "", category: "", size: "", price: 0});
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {}
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }));
+    }
 
     return (
         <div className={style.container}>
             <form className={style.form}>
                 <h2>{empty ? "Crear producto" : "Actualizar producto"}</h2>
                 {/*  */}
-                <InputLabel htmlFor="code" label="Código" placeholder="A236" type="text" name="code" id="code" value="" onChange={handleChange} />
-                <InputLabel htmlFor="name" label="Nombre" placeholder="LETRA CURSIVA" type="text" name="name" id="name" value="" onChange={handleChange} />
-                <SelectLabel htmlFor="type" label="Categoría" name="type" id="type" value="" onChange={handleChange} />
-                <InputLabel htmlFor="size" placeholder="15mm x 15mm" label="Tamaño" type="text" name="size" id="size" value="" onChange={handleChange} />
-                <InputLabel htmlFor="price" placeholder="3090.00" label="Precio" type="number" name="price" id="price" value="" onChange={handleChange} />
+                <InputLabel 
+                    id="code" 
+                    name="code" 
+                    htmlFor="code" 
+                    label="Código" 
+                    placeholder="A236" 
+                    type="text" 
+                    value={formData.code} 
+                    onChange={handleChange} 
+                    />
+                <InputLabel 
+                    id="name" 
+                    name="name" 
+                    htmlFor="name" 
+                    label="Nombre" 
+                    placeholder="LETRA CURSIVA" 
+                    type="text" 
+                    value={formData.name} 
+                    onChange={handleChange} 
+                    />
+                <SelectLabel 
+                    id="type" 
+                    name="type" 
+                    htmlFor="type" 
+                    label="Categoría" 
+                    value={formData.category} 
+                    onChange={handleChange} 
+                    />
+                <InputLabel 
+                    id="size" 
+                    name="size" 
+                    htmlFor="size" 
+                    placeholder="15mm x 15mm" 
+                    label="Tamaño" 
+                    type="text" 
+                    value={formData.size} 
+                    onChange={handleChange} 
+                    />
+                <InputLabel 
+                    id="price" 
+                    name="price" 
+                    htmlFor="price" 
+                    placeholder="3090.00" 
+                    label="Precio" 
+                    type="number" 
+                    value={formData.price.toString()} 
+                    onChange={handleChange} 
+                    />
                 {/*  */}
                 <div className={style.buttonContainer}>
 				    <button type="submit">Actualizar</button>
