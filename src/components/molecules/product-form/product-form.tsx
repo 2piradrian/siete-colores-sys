@@ -8,7 +8,7 @@ import style from "./style.module.css"
 type Props = {
     empty: boolean;
     setOpen: (open: boolean) => void;
-    onSubmit: (product: Product) => void;
+    onSubmit: (product: Product) => Promise<boolean>;
     onDelete: (code: string) => void;
 }
 
@@ -25,12 +25,12 @@ export default function ProductForm({ empty, setOpen, onSubmit, onDelete }: Prop
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        onSubmit(formData);
+        onSubmit(formData).then((bool) => {if (bool) setOpen(false)});
     }
 
     return (
         <div className={style.container}>
-            <form className={style.form}>
+            <form className={style.form} onSubmit={handleSubmit}>
                 <h2>{empty ? "Crear producto" : "Actualizar producto"}</h2>
                 {/*  */}
                 <InputLabel 
@@ -86,16 +86,17 @@ export default function ProductForm({ empty, setOpen, onSubmit, onDelete }: Prop
 				    <button type="submit">{empty? "Crear" : "Actualizar"}</button>
 				    <button type="button" onClick={() => setOpen(false)}>Cancelar</button>
 			    </div>
-			    <div 
-                    className={style.delete}
-				    onClick={() => {
-					    //deleteProduct(product!.id);
-					    setOpen(false);
-                        }
-                    }
-                >
+                {!empty &&
+                    <div 
+                        className={style.delete}
+				        onClick={() => {
+					        //deleteProduct(product!.id);
+					        setOpen(false);
+                            }
+                        }>
 				    <MdOutlineDeleteForever />
 			    </div>
+                }   
             </form>
         </div>
     )
