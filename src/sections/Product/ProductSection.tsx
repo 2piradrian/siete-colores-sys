@@ -3,8 +3,6 @@ import useProducts from "@/hooks/useProducts";
 import SearchForm from "@/components/SearchForm/SearchForm";
 import Title from "@/components/Title/Title";
 import ProductTable from "@/components/ProductTable/ProductTable";
-import UpdateForm from "@/components/UpdateForm/UpdateForm";
-import CreateForm from "@/components/CreateForm/CreateForm";
 import style from "./style.module.css";
 import ProductForm from "@/components/molecules/product-form/product-form";
 
@@ -39,7 +37,7 @@ function ProductSection() {
 				/> */}
 			)}
 			{openCreate && (
-				<ProductForm empty setOpen={setOpenCreate} />
+				<ProductForm empty setOpen={setOpenCreate} onSubmit={createProduct} onDelete={deleteProduct} />
 			)}
 			<div className={style.createButton} onClick={() => setOpenCreate(true)}>
 				+

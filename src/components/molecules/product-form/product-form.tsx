@@ -1,16 +1,18 @@
 import { useState } from "react";
+import { Product } from "@/types/types";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import InputLabel from "@/components/atoms/input-label/input-label";
 import SelectLabel from "@/components/atoms/select-label/select-label";
 import style from "./style.module.css"
-import { Product } from "@/types/types";
 
 type Props = {
     empty: boolean;
     setOpen: (open: boolean) => void;
+    onSubmit: (product: Product) => void;
+    onDelete: (code: string) => void;
 }
 
-export default function ProductForm({ empty, setOpen }: Props) {
+export default function ProductForm({ empty, setOpen, onSubmit, onDelete }: Props) {
     const [formData, setFormData] = useState<Product>({code: "", name: "", category: "", size: "", price: 0});
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -19,6 +21,11 @@ export default function ProductForm({ empty, setOpen }: Props) {
             ...prevFormData,
             [name]: value,
         }));
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        onSubmit(formData);
     }
 
     return (
@@ -76,7 +83,7 @@ export default function ProductForm({ empty, setOpen }: Props) {
                     />
                 {/*  */}
                 <div className={style.buttonContainer}>
-				    <button type="submit">Actualizar</button>
+				    <button type="submit">{empty? "Crear" : "Actualizar"}</button>
 				    <button type="button" onClick={() => setOpen(false)}>Cancelar</button>
 			    </div>
 			    <div 
