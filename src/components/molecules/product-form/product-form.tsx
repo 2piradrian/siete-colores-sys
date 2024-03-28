@@ -4,6 +4,7 @@ import { MdOutlineDeleteForever } from "react-icons/md";
 import InputLabel from "@/components/atoms/input-label/input-label";
 import SelectLabel from "@/components/atoms/select-label/select-label";
 import style from "./style.module.css"
+import { categories } from "@/data/categories";
 
 type Props = {
     empty: boolean;
@@ -13,7 +14,7 @@ type Props = {
 }
 
 export default function ProductForm({ empty, setOpen, onSubmit, onDelete }: Props) {
-    const [formData, setFormData] = useState<Product>({code: "", name: "", category: "Animales", size: "", price: 0});
+    const [formData, setFormData] = useState<Product>({code: "", name: "", category: categories[0], size: "", price: 0});
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
