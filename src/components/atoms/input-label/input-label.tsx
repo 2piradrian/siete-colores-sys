@@ -8,7 +8,7 @@ type Props = {
     name: string;
     id: string;
     value: string | undefined;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void | undefined;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function InputLabel({htmlFor, label, type, placeholder, name, id, value, onChange}: Props){

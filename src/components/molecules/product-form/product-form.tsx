@@ -47,9 +47,9 @@ export default function ProductForm({ empty, setOpen }: Props) {
                     onChange={handleChange} 
                     />
                 <SelectLabel 
-                    id="type" 
-                    name="type" 
-                    htmlFor="type" 
+                    id="category" 
+                    name="category" 
+                    htmlFor="category" 
                     label="Categoría" 
                     value={formData.category} 
                     onChange={handleChange} 

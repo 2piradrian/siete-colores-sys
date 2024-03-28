@@ -7,7 +7,7 @@ type Props = {
     name: string;
     id: string;
     value: string | undefined;
-    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void | undefined;
+    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 
 export default function SelectLabel({htmlFor, label, name, id, value, onChange}: Props){
