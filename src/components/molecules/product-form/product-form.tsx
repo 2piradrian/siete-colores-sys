@@ -13,7 +13,7 @@ type Props = {
 }
 
 export default function ProductForm({ empty, setOpen, onSubmit, onDelete }: Props) {
-    const [formData, setFormData] = useState<Product>({code: "", name: "", category: "", size: "", price: 0});
+    const [formData, setFormData] = useState<Product>({code: "", name: "", category: "Animales", size: "", price: 0});
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
