@@ -28,6 +28,11 @@ export default function ProductForm({ empty, setOpen, onSubmit, onDelete }: Prop
         onSubmit(formData).then((bool) => {if (bool) setOpen(false)});
     }
 
+    const handleDelete = () => {
+        onDelete(formData.code);
+        setOpen(false);
+    }
+
     return (
         <div className={style.container}>
             <form className={style.form} onSubmit={handleSubmit}>
@@ -87,15 +92,9 @@ export default function ProductForm({ empty, setOpen, onSubmit, onDelete }: Prop
 				    <button type="button" onClick={() => setOpen(false)}>Cancelar</button>
 			    </div>
                 {!empty &&
-                    <div 
-                        className={style.delete}
-				        onClick={() => {
-					        //deleteProduct(product!.id);
-					        setOpen(false);
-                            }
-                        }>
-				    <MdOutlineDeleteForever />
-			    </div>
+                    <div className={style.delete} onClick={handleDelete}>
+				        <MdOutlineDeleteForever />
+			        </div>
                 }   
             </form>
         </div>
