@@ -15,18 +15,18 @@ function ProductTable({ products, isComplete, onClick }: Props) {
 				<tr>
 					<th className={style.tableHeader}>Código</th>
 					<th className={style.tableHeader}>Nombre</th>
-					{isComplete && <th className={style.tableHeader}>Tipo (Categoria)</th>}
-					{isComplete && <th className={style.tableHeader}>Peso</th>}
+					{isComplete && <th className={style.tableHeader}>Categoria</th>}
+					{isComplete && <th className={style.tableHeader}>Precio</th>}
 				</tr>
 				{products.map((product) => (
 					<tr
 						className={style.tableRow}
-						key={product.id}
-						onClick={() => onClick(product.id)}>
+						key={product.code}
+						onClick={() => onClick(product.code)}>
 						<td className={style.tableCell}>{product.code}</td>
 						<td className={style.tableCell}>{product.name}</td>
-						{isComplete && <td className={style.tableCell}>{product.type}</td>}
-						{isComplete && <td className={style.tableCell}>{product.weight}</td>}
+						{isComplete && <td className={style.tableCell}>{product.category}</td>}
+						{isComplete && <td className={style.tableCell}>{product.price}</td>}
 					</tr>
 				))}
 			</tbody>

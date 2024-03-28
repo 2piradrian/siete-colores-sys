@@ -8,13 +8,20 @@ import style from "./style.module.css"
 
 type Props = {
     empty: boolean;
+    product: Product | null | undefined
     setOpen: (open: boolean) => void;
     onSubmit: (product: Product) => Promise<boolean>;
     onDelete: (code: string) => void;
 }
 
-export default function ProductForm({ empty, setOpen, onSubmit, onDelete }: Props) {
-    const [formData, setFormData] = useState<Product>({code: "", name: "", category: categories[0], size: "", price: 0});
+export default function ProductForm({ empty, product, setOpen, onSubmit, onDelete }: Props) {
+    const [formData, setFormData] = useState<Product>({
+        code: product?.code || "", 
+        name: product?.name || "", 
+        category: product?.category || categories[0], 
+        size: product?.size || "",
+        price: product?.price || 0,
+    });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;

@@ -5,17 +5,23 @@ import Title from "@/components/Title/Title";
 import ProductTable from "@/components/ProductTable/ProductTable";
 import style from "./style.module.css";
 import ProductForm from "@/components/molecules/product-form/product-form";
+import { Product } from "@/types/types";
 
 function ProductSection() {
 	const { products, setSearch, getProductByCode, updateProduct, createProduct, deleteProduct } = useProducts();
 
 	const [openUpdate, setOpenUpdate] = useState(false);
 	const [openCreate, setOpenCreate] = useState(false);
-	const [code, setCode] = useState("");
 
-	const handleForm = (code: string) => {
+	const [product, setProduct] = useState<Product | null>();
+
+	const handleForm = async (code: string) => {
 		setOpenUpdate(true);
-		setCode(code);
+		const productDB = await getProductByCode(code);
+
+		if (productDB) {
+			setProduct(productDB);
+		}
 	};
 
 	return (
@@ -28,16 +34,20 @@ function ProductSection() {
 				)}
 			</div>
 			{(openUpdate) && (
-				{/* <UpdateForm
-					code={code}
-					setOpen={setOpenUpdate}
-					getProductByCode={getProductByCode}
-					updateProduct={updateProduct}
-					deleteProduct={deleteProduct}
-				/> */}
+				<ProductForm 
+					empty={false} 
+					product={product} 
+					setOpen={setOpenUpdate} 
+					onSubmit={updateProduct} 
+					onDelete={deleteProduct} />
 			)}
 			{openCreate && (
-				<ProductForm empty setOpen={setOpenCreate} onSubmit={createProduct} onDelete={deleteProduct} />
+				<ProductForm 
+					empty 
+					product={null} 
+					setOpen={setOpenCreate} 
+					onSubmit={createProduct} 
+					onDelete={deleteProduct} />
 			)}
 			<div className={style.createButton} onClick={() => setOpenCreate(true)}>
 				+

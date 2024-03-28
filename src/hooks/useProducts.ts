@@ -48,9 +48,10 @@ function useProducts() {
 
 	const getProductByCode = async (code: string): Promise<Product | null> => {
 		try {
-			const response: AxiosResponse<Product> = await instance.get("/products/get-by-code?code=" + code);
+			const response: AxiosResponse<Product> = await instance.get("/products/get-by-code", {params: {code}});
 			return response.data;
-		} catch (error) {
+		} 
+		catch (error) {
 			alert("Error encontrando el producto con el código: " + code);
 			return null;
 		}
@@ -64,7 +65,7 @@ function useProducts() {
 			if (products.find((p) => p.code === product.code)) {
 				throw new Error("El código ya existe");
 			}
-			await instance.post("/products/create", product, { headers: {"authorization": env.SECRET}});
+			await instance.post("/products/create", product, {headers: {"authorization": env.SECRET}});
 			updateList()
 			return true;
 		} 
@@ -76,17 +77,16 @@ function useProducts() {
 
 	const updateProduct = async (product: Product) => {
 		if (!product.name || !product.code || !product.size || !product.category || !product.price) {
-			alert("Rellena todos los campos");
-			return null;
+			throw new Error("Rellena todos los campos");
 		}
 		try {
-			await instance.put("/products/update", product);
-
+			await instance.put("/products/update", product, {headers: {"authorization": env.SECRET}});
 			updateList()
-			// return response.data; // We need it ? Try to remove it : Promise<Product | null>
-		} catch (error) {
+			return true;
+		} 
+		catch (error) {
 			alert("Error actualizando el producto: " + error);
-			return null;
+			return false;
 		}
 	};
 
@@ -95,7 +95,8 @@ function useProducts() {
 			const response: AxiosResponse<Product> = await instance.delete(id);
 			await fetchProducts();
 			return response.data || null;
-		} catch (error) {
+		} 
+		catch (error) {
 			alert("Error eliminando el producto: " + error);
 			return null;
 		}
