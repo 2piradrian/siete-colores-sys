@@ -5,6 +5,7 @@ import { MdOutlineDeleteForever } from "react-icons/md";
 import InputLabel from "@/components/atoms/input-label/input-label";
 import SelectLabel from "@/components/atoms/select-label/select-label";
 import style from "./style.module.css"
+import MainButton from "@/components/atoms/main-button/main-button";
 
 type Props = {
     empty: boolean;
@@ -48,8 +49,6 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                 {/*  */}
                 <InputLabel 
                     id="code" 
-                    name="code" 
-                    htmlFor="code" 
                     label="Código" 
                     placeholder="A236" 
                     type="text" 
@@ -58,8 +57,6 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     />
                 <InputLabel 
                     id="name" 
-                    name="name" 
-                    htmlFor="name" 
                     label="Nombre" 
                     placeholder="LETRA CURSIVA" 
                     type="text" 
@@ -68,16 +65,12 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     />
                 <SelectLabel 
                     id="category" 
-                    name="category" 
-                    htmlFor="category" 
                     label="Categoría" 
                     value={formData.category} 
                     onChange={handleChange} 
                     />
                 <InputLabel 
                     id="size" 
-                    name="size" 
-                    htmlFor="size" 
                     placeholder="15mm x 15mm" 
                     label="Tamaño" 
                     type="text" 
@@ -86,9 +79,7 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     />
                 <InputLabel 
                     id="price" 
-                    name="price" 
-                    htmlFor="price" 
-                    placeholder="3090.00" 
+                    placeholder="3090.50" 
                     label="Precio" 
                     type="number" 
                     value={formData.price.toString()} 
@@ -96,8 +87,8 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     />
                 {/*  */}
                 <div className={style.buttonContainer}>
-				    <button type="submit">{empty? "Crear" : "Actualizar"}</button>
-				    <button type="button" onClick={() => setOpen(false)}>Cancelar</button>
+                    <MainButton text={empty? "Crear" : "Actualizar"} type="submit"/>
+                    <MainButton text="Cancelar" type="button" onClick={() => setOpen(false)}/>
 			    </div>
                 {!empty &&
                     <div className={style.delete} onClick={handleDelete}>

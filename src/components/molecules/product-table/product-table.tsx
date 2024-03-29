@@ -5,10 +5,10 @@ import { Product } from "@/types/types";
 type Props = {
 	products: Product[];
 	isComplete: boolean;
-	onClick: (id: string) => void;
+	onClick: (code: string) => void;
 };
 
-function ProductTable({ products, isComplete, onClick }: Props) {
+export default function ProductTable({ products, isComplete, onClick }: Props) {
 	return (
 		<table className={style.productTable}>
 			<tbody>
@@ -33,5 +33,3 @@ function ProductTable({ products, isComplete, onClick }: Props) {
 		</table>
 	);
 }
-
-export default ProductTable;

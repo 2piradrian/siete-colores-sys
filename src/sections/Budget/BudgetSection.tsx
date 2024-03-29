@@ -1,20 +1,13 @@
 import React, { useRef, useEffect } from "react";
-import style from "./style.module.css";
 import ProductBudgetTable from "@/components/BudgetTable/ProductBudgetTable";
 import BudgetTable from "@/components/BudgetTable/BudgetTable";
 import Title from "@/components/Title/Title";
 import useBudget from "@/hooks/useBudget";
+import style from "./style.module.css";
+import InputLabel from "@/components/atoms/input-label/input-label";
 
 function BudgetSection() {
-	const {
-		products,
-		budget,
-		addProduct,
-		subtractProduct,
-		getTotal,
-		setPriceAndClient,
-		createBudget,
-	} = useBudget();
+	const { products, budget, addProduct, subtractProduct, getTotal, setPriceAndClient, createBudget } = useBudget();
 
 	const budgetTableRef = useRef<HTMLDivElement | null>(null);
 
@@ -38,13 +31,7 @@ function BudgetSection() {
 		<div className="bigcontainer">
 			<Title title="Nuevo Presupuesto" />
 			<form onSubmit={handleSubmit}>
-				<input
-					type="number"
-					step="0.01"
-					placeholder="Gramo"
-					name="price"
-					className={style.input}
-				/>
+				<InputLabel label="Precio" type="number" id="price" placeholder="precio" value="" onChange={()=>{}} />
 				<input type="text" placeholder="Cliente" name="client" className={style.input} />
 				<button type="submit" className={style.button}>
 					Cargar datos

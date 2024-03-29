@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import { Product } from "@/types/types";
 import useProducts from "@/hooks/useProducts";
 import SearchForm from "@/components/SearchForm/SearchForm";
 import Title from "@/components/Title/Title";
-import ProductTable from "@/components/ProductTable/ProductTable";
-import style from "./style.module.css";
+import ProductTable from "@/components/molecules/product-table/product-table";
 import ProductForm from "@/components/molecules/product-form/product-form";
-import { Product } from "@/types/types";
+import style from "./style.module.css";
 
 function ProductSection() {
 	const { products, setSearch, getProductByCode, updateProduct, createProduct, deleteProduct } = useProducts();
