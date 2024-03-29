@@ -4,29 +4,27 @@ import { Product } from "@/types/types";
 
 type Props = {
 	products: Product[];
-	isComplete: boolean;
+    table: string[][];
 	onClick: (code: string) => void;
 };
 
-export default function ProductTable({ products, isComplete, onClick }: Props) {
+export default function ProductTable({ products, table, onClick }: Props) {
 	return (
-		<table className={style.productTable}>
+		<table className={style.table}>
 			<tbody>
 				<tr>
-					<th className={style.tableHeader}>Código</th>
-					<th className={style.tableHeader}>Nombre</th>
-					{isComplete && <th className={style.tableHeader}>Categoria</th>}
-					{isComplete && <th className={style.tableHeader}>Precio</th>}
+                    {table[0].map((header) => (
+                        <th className={style.tableHeader}>{header}</th>
+                    ))}
 				</tr>
 				{products.map((product) => (
 					<tr
 						className={style.tableRow}
 						key={product.code}
 						onClick={() => onClick(product.code)}>
-						<td className={style.tableCell}>{product.code}</td>
-						<td className={style.tableCell}>{product.name}</td>
-						{isComplete && <td className={style.tableCell}>{product.category}</td>}
-						{isComplete && <td className={style.tableCell}>{product.price}</td>}
+                        {table[1].map((content) => (
+                            <td className={style.tableCell}>{product[content as keyof Product]}</td>
+                        ))}
 					</tr>
 				))}
 			</tbody>

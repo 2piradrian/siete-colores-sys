@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Product } from "@/types/types";
-import { categories } from "@/data/categories";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import InputLabel from "@/components/atoms/input-label/input-label";
 import SelectLabel from "@/components/atoms/select-label/select-label";
 import style from "./style.module.css"
 import MainButton from "@/components/atoms/main-button/main-button";
+import { categories } from "@/data/categories";
 
 type Props = {
     empty: boolean;

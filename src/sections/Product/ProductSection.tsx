@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Product } from "@/types/types";
+import { allProductsTable } from "@/data/tables";
 import useProducts from "@/hooks/useProducts";
 import SearchForm from "@/components/SearchForm/SearchForm";
 import Title from "@/components/Title/Title";
-import ProductTable from "@/components/molecules/product-table/product-table";
 import ProductForm from "@/components/molecules/product-form/product-form";
+import ProductTable from "@/components/molecules/product-table/product-table";
 import style from "./style.module.css";
+import FAButton from "@/components/atoms/fa-button/fa-button";
 
-function ProductSection() {
+export default function ProductSection() {
 	const { products, setSearch, getProductByCode, updateProduct, createProduct, deleteProduct } = useProducts();
 
 	const [openUpdate, setOpenUpdate] = useState(false);
@@ -25,12 +27,12 @@ function ProductSection() {
 	};
 
 	return (
-		<>
-			<div className="bigcontainer">
+		<section className="container">
+			<div className={style.container}>
 				<Title title="Productos" />
 				<SearchForm setSearch={setSearch} />
 				{products.length > 0 && (
-					<ProductTable products={products} onClick={handleForm} isComplete />
+					<ProductTable products={products} onClick={handleForm} table={allProductsTable} />
 				)}
 			</div>
 			{(openUpdate) && (
@@ -49,11 +51,7 @@ function ProductSection() {
 					onSubmit={createProduct} 
 					onDelete={deleteProduct} />
 			)}
-			<div className={style.createButton} onClick={() => setOpenCreate(true)}>
-				+
-			</div>
-		</>
+			<FAButton content="+" onClick={() => setOpenCreate(true)} />
+		</section>
 	);
 }
-
-export default ProductSection;

@@ -5,6 +5,7 @@ import Title from "@/components/Title/Title";
 import useBudget from "@/hooks/useBudget";
 import style from "./style.module.css";
 import InputLabel from "@/components/atoms/input-label/input-label";
+import MainButton from "@/components/atoms/main-button/main-button";
 
 function BudgetSection() {
 	const { products, budget, addProduct, subtractProduct, getTotal, setPriceAndClient, createBudget } = useBudget();
@@ -31,13 +32,12 @@ function BudgetSection() {
 		<div className="bigcontainer">
 			<Title title="Nuevo Presupuesto" />
 			<form onSubmit={handleSubmit}>
-				<InputLabel label="Precio" type="number" id="price" placeholder="precio" value="" onChange={()=>{}} />
-				<input type="text" placeholder="Cliente" name="client" className={style.input} />
-				<button type="submit" className={style.button}>
-					Cargar datos
-				</button>
+				<div>
+					<InputLabel id="price" type="text" label="Cliente" placeholder="Cotillon" value="" onChange={()=>{}} />
+					<MainButton text="Cargar datos" type="submit" onClick={()=>{}} />
+				</div>
 			</form>
-			<p className={style.total}>Total: {getTotal()}</p>
+			<p className={style.total}>Total: $ {getTotal()}</p>
 			<div className="rowbigcontainer">
 				<div className={style.tablecontainer}>
 					<ProductBudgetTable

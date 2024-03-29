@@ -1,5 +1,6 @@
-.productTable {
-	width: 80%;
+.table {
+    width: 100%;
+    margin: 10px;
 	border-collapse: collapse;
 }
 

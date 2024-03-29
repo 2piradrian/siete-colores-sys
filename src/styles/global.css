@@ -29,14 +29,14 @@ html * {
 	width: 100%;
 }
 
-.bigcontainer {
-	min-height: 100vh;
+.container {
 	height: auto;
 	width: 100%;
-	padding: 0px 20px;
+	padding: 0px 100px;
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	position: relative;
 	color: var(--contrast);
