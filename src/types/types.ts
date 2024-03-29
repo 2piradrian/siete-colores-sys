@@ -2,7 +2,7 @@ export type BudgetProduct = {
 	code: string;
 	name: string;
 	quantity: number;
-	weight: number;
+	price: number;
 };
 
 export type Budget = {

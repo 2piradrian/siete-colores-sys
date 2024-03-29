@@ -2,6 +2,7 @@ import { Budget, BudgetProduct, Product } from "@/types/types";
 import { useEffect, useState } from "react";
 import useProducts from "./useProducts";
 import axios, { AxiosResponse } from "axios";
+import { instance } from "@/adapters/instance";
 
 function useBudget() {
 	const { products } = useProducts();
@@ -19,15 +20,11 @@ function useBudget() {
 
 	useEffect(() => {
 		const getBudgets = async () => {
-			const response: AxiosResponse<Budget[]> = await instance.get("");
+			const response: AxiosResponse<Budget[]> = await instance.get("/budgets");
 			setBudgetList(response.data);
 		};
 		getBudgets();
 	}, []);
-
-	const instance = axios.create({
-		baseURL: "http://localhost:3333/budgets",
-	});
 
 	const createBudget = async (): Promise<Product | null> => {
 		if (budget.products.length === 0 || !budget.price || !budget.client) {

@@ -42,18 +42,6 @@ html * {
 	color: var(--contrast);
 }
 
-.rowbigcontainer {
-	height: auto;
-	width: 100%;
-	padding: 0px 60px;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	color: var(--contrast);
-}
-
 .wrapcontainer {
 	margin-top: 60px;
 	min-height: calc(100vh - 60px);

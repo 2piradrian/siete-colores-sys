@@ -1,6 +1,12 @@
-.tablecontainer {
-	height: 65vh;
+.tableContainer {
+	height: 100%;
 	width: 100%;
+	display: flex;
+}
+
+.table {
+	height: 100%;
+	width: 50%;
 	max-width: 800px;
 	display: flex;
 	flex-direction: column;
@@ -11,28 +17,13 @@
 	scroll-behavior: smooth;
 }
 
-.input {
-	width: 200px;
-	height: 40px;
-	padding: 10px;
-	border-radius: 8px;
-	outline: none;
-	border: 0px;
-	margin: 10px;
-	border: 2px solid var(--main);
-}
-
-.button {
-	width: 200px;
-	height: 40px;
-	padding: 10px;
-	border-radius: 8px;
-	outline: none;
-	border: 0px;
-	margin: 10px;
-	background-color: var(--main);
-	border: 2px solid var(--main);
-	cursor: pointer;
+.preform {
+	height: auto;
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .total {

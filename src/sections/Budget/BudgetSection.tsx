@@ -1,11 +1,12 @@
 import React, { useRef, useEffect } from "react";
-import ProductBudgetTable from "@/components/BudgetTable/ProductBudgetTable";
 import BudgetTable from "@/components/BudgetTable/BudgetTable";
 import Title from "@/components/Title/Title";
 import useBudget from "@/hooks/useBudget";
 import style from "./style.module.css";
 import InputLabel from "@/components/atoms/input-label/input-label";
 import MainButton from "@/components/atoms/main-button/main-button";
+import ProductTable from "@/components/molecules/product-table/product-table";
+import { reducedProductsTable } from "@/data/tables";
 
 function BudgetSection() {
 	const { products, budget, addProduct, subtractProduct, getTotal, setPriceAndClient, createBudget } = useBudget();
@@ -29,28 +30,26 @@ function BudgetSection() {
 	};
 
 	return (
-		<div className="bigcontainer">
+		<section className="container">
 			<Title title="Nuevo Presupuesto" />
 			<form onSubmit={handleSubmit}>
-				<div>
+				<div className={style.preform}>
 					<InputLabel id="price" type="text" label="Cliente" placeholder="Cotillon" value="" onChange={()=>{}} />
 					<MainButton text="Cargar datos" type="submit" onClick={()=>{}} />
 				</div>
 			</form>
 			<p className={style.total}>Total: $ {getTotal()}</p>
-			<div className="rowbigcontainer">
-				<div className={style.tablecontainer}>
-					<ProductBudgetTable
-						products={products}
-						onClick={(code: string) => addProduct(code)}
-					/>
+			<div className={style.tableContainer}>
+				<div className={style.table}>
+					<ProductTable products={products} table={reducedProductsTable} onClick={(code: string) => addProduct(code)} />
 				</div>
-				<div className={style.tablecontainer} ref={budgetTableRef}>
-					<BudgetTable
+				<div className={style.table} ref={budgetTableRef}>
+					<ProductTable products={budget.products} table={reducedProductsTable} onClick={(code: string) => subtractProduct(code)} />
+					{/* <BudgetTable
 						products={budget.products}
 						price={budget.price}
 						onClick={(code: string) => subtractProduct(code)}
-					/>
+					/> */}
 				</div>
 			</div>
 			<div
@@ -60,7 +59,7 @@ function BudgetSection() {
 				}}>
 				+
 			</div>
-		</div>
+		</section>
 	);
 }
 

@@ -30,13 +30,13 @@ function BudgetTable({ products, price, onClick }: Props) {
 								<td className={style.tableCell}>{product.name}</td>
 								<td className={style.tableCell}>{product.quantity}</td>
 								<td className={style.tableCell}>
-									$ {parseFloat((product.weight * price).toFixed(2)).toString()}
+									{/* $ {parseFloat((product.weight * price).toFixed(2)).toString()} */}
 								</td>
 								<td className={style.tableCell}>
 									${" "}
-									{parseFloat(
+									{/* {parseFloat(
 										(product.weight * price * product.quantity).toFixed(2)
-									).toString()}
+									).toString()} */}
 								</td>
 							</tr>
 						</>
