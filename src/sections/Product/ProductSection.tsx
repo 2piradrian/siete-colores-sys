@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Product } from "@/types/types";
 import { allProductsTable } from "@/data/tables";
 import useProducts from "@/hooks/useProducts";
-import SearchForm from "@/components/SearchForm/SearchForm";
+import SearchForm from "@/components/molecules/search-form/search-form";
 import Title from "@/components/Title/Title";
 import ProductForm from "@/components/molecules/product-form/product-form";
 import ProductTable from "@/components/molecules/product-table/product-table";
-import style from "./style.module.css";
 import FAButton from "@/components/atoms/fa-button/fa-button";
+import style from "./style.module.css";
 
 export default function ProductSection() {
 	const { products, setSearch, getProductByCode, updateProduct, createProduct, deleteProduct } = useProducts();
