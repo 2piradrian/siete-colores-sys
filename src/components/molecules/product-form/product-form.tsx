@@ -36,17 +36,23 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
         }
     }, [product]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [name]: value,
-        }));
-    }
-
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        onSubmit(formData).then((bool) => {if (bool) setOpen(false)});
+        const product = Object.fromEntries(new FormData(e.currentTarget));
+
+        if (!product.code || !product.name || !product.category || !product.size || !product.price) {
+            return alert("Debes llenar todos los campos");
+        }
+
+        const newProduct: Product = {
+            code: product.code as string,
+            name: product.name as string,
+            category: product.category as string,
+            size: product.size as string,
+            price: Number(product.price),
+        }
+
+        onSubmit(newProduct).then((bool) => {if (bool) setOpen(false)});
     }
 
     const handleDelete = () => {
@@ -58,14 +64,12 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
         <div className={style.container}>
             <form className={style.form} onSubmit={handleSubmit}>
                 <h2>{empty ? "Crear producto" : "Actualizar producto"}</h2>
-                {/*  */}
                 <InputLabel 
                     id="code" 
                     label="Código" 
                     placeholder="A236" 
                     type="text" 
                     value={formData.code} 
-                    onChange={handleChange} 
                     />
                 <InputLabel 
                     id="name" 
@@ -73,13 +77,11 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     placeholder="LETRA CURSIVA" 
                     type="text" 
                     value={formData.name} 
-                    onChange={handleChange} 
                     />
                 <SelectLabel 
                     id="category" 
                     label="Categoría" 
                     value={formData.category} 
-                    onChange={handleChange} 
                     />
                 <InputLabel 
                     id="size" 
@@ -87,7 +89,6 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     label="Tamaño" 
                     type="text" 
                     value={formData.size} 
-                    onChange={handleChange} 
                     />
                 <InputLabel 
                     id="price" 
@@ -95,7 +96,6 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
                     label="Precio" 
                     type="number" 
                     value={formData.price.toString()} 
-                    onChange={handleChange} 
                     />
                 {/*  */}
                 <div className={style.buttonContainer}>

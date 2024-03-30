@@ -9,7 +9,7 @@ import ProductTable from "@/components/molecules/product-table/product-table";
 import FAButton from "@/components/atoms/fa-button/fa-button";
 import style from "./style.module.css";
 
-export default function ProductSection() {
+export default function ProductList() {
 	const { products, setSearch, getProductByCode, updateProduct, createProduct, deleteProduct } = useProducts();
 
 	const [openUpdate, setOpenUpdate] = useState(false);

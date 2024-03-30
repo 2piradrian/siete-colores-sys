@@ -7,9 +7,8 @@ import MainButton from "@/components/atoms/main-button/main-button";
 import ProductTable from "@/components/molecules/product-table/product-table";
 import style from "./style.module.css";
 
-function BudgetSection() {
+export default function BudgetEditor() {
 	const { products, budget, addProduct, subtractProduct, getTotal, setClientOnBudget, createBudget } = useBudget();
-	const [client, setClient] = useState<string>("");
 
 	const budgetTableRef = useRef<HTMLDivElement | null>(null);
 
@@ -22,6 +21,8 @@ function BudgetSection() {
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
+		const client = Object.fromEntries(new FormData(e.currentTarget)).client as string;
+
 		if (client === "") {
 			alert("Debe ingresar un cliente");
 			return;
@@ -31,17 +32,13 @@ function BudgetSection() {
 		alert("Datos cargados correctamente");
 	};
 
-	const onClientChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setClient(e.target.value);
-	};
-
 	return (
 		<section className="container">
 			<Title title="Nuevo Presupuesto" />
 			<form onSubmit={handleSubmit}>
 				<div className={style.preform}>
-					<InputLabel id="price" type="text" label="Cliente" placeholder="Cotillon" value={client} onChange={onClientChange} />
-					<MainButton text="Cargar datos" type="submit" onClick={()=>{}} />
+					<InputLabel id="price" type="text" label="Cliente" placeholder="Cotillon" />
+					<MainButton text="Cargar datos" type="submit" />
 				</div>
 			</form>
 			<p className={style.total}>Total: $ {getTotal()}</p>
@@ -63,5 +60,3 @@ function BudgetSection() {
 		</section>
 	);
 }
-
-export default BudgetSection;

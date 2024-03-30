@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./style.module.css";
+import InputLabel from "@/components/atoms/input-label/input-label";
 
 type Props = {
 	setSearch: (search: string) => void;
@@ -14,7 +14,7 @@ function SearchForm({ setSearch }: Props) {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<input className={style.input} type="text" placeholder="Buscar" name="search" />
+			<InputLabel id="search" label="Buscar producto" placeholder="Sandalia" type="text" />
 		</form>
 	);
 }

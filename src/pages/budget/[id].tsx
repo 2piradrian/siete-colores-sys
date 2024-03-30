@@ -1,4 +1,4 @@
-import TableToPrint from "@/components/TableToPrint/TableToPrint";
+import PrintTable from "@/components/molecules/print-table/print-table";
 import useBudget from "@/hooks/useBudget";
 import { Budget } from "@/types/types";
 import { useRouter } from "next/router";
@@ -8,7 +8,6 @@ function Budget() {
 	const { getBudget } = useBudget();
 	const [budget, setBudget] = useState<Budget | undefined>({} as Budget);
 
-	// id from url params
 	const router = useRouter();
 	const { id } = router.query;
 
@@ -26,7 +25,7 @@ function Budget() {
 	}, [id]);
 
 	return budget?.products ? (
-		<TableToPrint
+		<PrintTable
 			id={id}
 			products={budget?.products}
 			total={budget?.total}

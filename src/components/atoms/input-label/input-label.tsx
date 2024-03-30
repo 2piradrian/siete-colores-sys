@@ -19,7 +19,7 @@ export default function InputLabel({label, type, placeholder, id, value}: Props)
     return(
         <div className={style.container}>
             <label htmlFor={id}>{label}</label>
-		    <input type={type} placeholder={placeholder} name={id} id={id} value={value || self} onChange={handleChange} />
+		    <input type={type} placeholder={placeholder} name={id} id={id} value={self} onChange={handleChange} />
         </div>
     )
 }

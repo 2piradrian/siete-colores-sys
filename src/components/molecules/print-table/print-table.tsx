@@ -3,7 +3,7 @@ import style from "./style.module.css";
 import { BudgetProduct } from "@/types/types";
 import useBudget from "@/hooks/useBudget";
 import { useRouter } from "next/router";
-import BudgetTable from "../molecules/budget-table/budget-table";
+import BudgetTable from "../budget-table/budget-table";
 
 type Props = {
 	id: string | string[] | undefined;
@@ -11,7 +11,7 @@ type Props = {
 	total: number;
 };
 
-function TableToPrint({ id, products, total }: Props) {
+export default function PrintTable({ id, products, total }: Props) {
 	const router = useRouter();
 
 	const { deleteBudget } = useBudget();
@@ -41,5 +41,3 @@ function TableToPrint({ id, products, total }: Props) {
 		</div>
 	);
 }
-
-export default TableToPrint;

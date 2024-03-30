@@ -1,13 +1,11 @@
 import AppLayout from "@/layout/AppLayout";
-import BudgetSection from "@/sections/Budget/BudgetSection";
+import BudgetEditor from "@/components/organism/budget-editor/budget-editor";
 import React from "react";
 
-function Budgets() {
+export default function Budgets() {
 	return (
 		<AppLayout title="Presupuestar">
-			<BudgetSection />
+			<BudgetEditor />
 		</AppLayout>
 	);
 }
-
-export default Budgets;

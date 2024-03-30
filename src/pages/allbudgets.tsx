@@ -1,11 +1,11 @@
 import AppLayout from "@/layout/AppLayout";
-import AllBudgetsSection from "@/sections/AllBudgets/AllBudgetsSection";
+import BudgetList from "@/components/organism/budget-list/budget-list";
 import React from "react";
 
 function AllBudgets() {
 	return (
 		<AppLayout title="Presupuestos">
-			<AllBudgetsSection />
+			<BudgetList />
 		</AppLayout>
 	);
 }

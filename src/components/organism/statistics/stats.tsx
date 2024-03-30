@@ -2,8 +2,9 @@ import React from "react";
 import useStadistics from "@/hooks/useStatistics";
 import style from "./style.module.css";
 
-function Statistics() {
+export default function Stats() {
 	const { statistics } = useStadistics();
+	
 	return (
 		<>
 			<div className={style.container}>
@@ -69,5 +70,3 @@ function Statistics() {
 		</>
 	);
 }
-
-export default Statistics;

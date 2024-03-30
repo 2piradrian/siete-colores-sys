@@ -2,7 +2,7 @@ import AllBudgetsTable from "@/components/molecules/budgets-table/budgets-table"
 import Title from "@/components/atoms/title/title";
 import useBudget from "@/hooks/useBudget";
 
-function AllBudgetsSection() {
+export default function BudgetList() {
 	const { budgetList } = useBudget();
 
 	return (
@@ -12,5 +12,3 @@ function AllBudgetsSection() {
 		</div>
 	);
 }
-
-export default AllBudgetsSection;
