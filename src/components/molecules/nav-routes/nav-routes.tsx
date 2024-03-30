@@ -1,4 +1,4 @@
-import NavItem from "../NavItem/NavItem";
+import NavItem from "../nav-item/nav-item";
 import { AiFillHome } from "react-icons/ai";
 import { FaBook, FaBookMedical, FaPercent } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";

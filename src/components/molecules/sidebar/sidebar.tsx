@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineClose } from "react-icons/ai";
-import NavRoutes from "../../NavRoutes/NavRoutes";
+import NavRoutes from "../nav-routes/nav-routes";
 import style from "./style.module.css";
 
 function Sidebar() {
