@@ -3,7 +3,7 @@ import { Product } from "@/types/types";
 import { allProductsTable } from "@/data/tables";
 import useProducts from "@/hooks/useProducts";
 import SearchForm from "@/components/molecules/search-form/search-form";
-import Title from "@/components/Title/Title";
+import Title from "@/components/atoms/title/title";
 import ProductForm from "@/components/molecules/product-form/product-form";
 import ProductTable from "@/components/molecules/product-table/product-table";
 import FAButton from "@/components/atoms/fa-button/fa-button";

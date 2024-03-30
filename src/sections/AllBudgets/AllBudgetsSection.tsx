@@ -1,5 +1,5 @@
 import AllBudgetsTable from "@/components/molecules/budgets-table/budgets-table";
-import Title from "@/components/Title/Title";
+import Title from "@/components/atoms/title/title";
 import useBudget from "@/hooks/useBudget";
 
 function AllBudgetsSection() {

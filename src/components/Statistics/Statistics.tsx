@@ -1,6 +1,6 @@
-import React, { use } from "react";
-import style from "./style.module.css";
+import React from "react";
 import useStadistics from "@/hooks/useStatistics";
+import style from "./style.module.css";
 
 function Statistics() {
 	const { statistics } = useStadistics();

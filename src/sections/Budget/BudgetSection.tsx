@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { budgetProductsTable, reducedProductsTable } from "@/data/tables";
 import useBudget from "@/hooks/useBudget";
-import Title from "@/components/Title/Title";
+import Title from "@/components/atoms/title/title";
 import InputLabel from "@/components/atoms/input-label/input-label";
 import MainButton from "@/components/atoms/main-button/main-button";
 import ProductTable from "@/components/molecules/product-table/product-table";

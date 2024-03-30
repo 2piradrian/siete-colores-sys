@@ -93,6 +93,23 @@ function useProducts() {
 		}
 	};
 
+	const updatePrices = async (serie: string, percent: number) => {
+		try {
+			await instance.put("/products/update-prices", {serie, percent}, {headers: {"authorization": env.SECRET}});
+
+			alert("Precios actualizados correctamente");
+			updateList()
+
+			return true;
+		} 
+		catch (error) {
+			alert("Error actualizando los precios: " + error);
+
+			return false;
+		}
+	
+	}
+
 	const deleteProduct = async (code: string) => {
 		try {
 			await instance.delete("products/delete", {params: {code}, headers: {"authorization": env.SECRET}});
@@ -114,6 +131,7 @@ function useProducts() {
 		getProductByCode,
 		createProduct,
 		updateProduct,
+		updatePrices,
 		deleteProduct,
 	};
 }

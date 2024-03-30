@@ -1,3 +1,4 @@
+import { useState } from "react";
 import style from "./style.module.css"
 
 type Props = {
@@ -5,15 +6,20 @@ type Props = {
     type: "text" | "number";
     label: string;
     placeholder: string;
-    value: string | undefined;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    value?: string | undefined;
 }
 
-export default function InputLabel({label, type, placeholder, id, value, onChange}: Props){
+export default function InputLabel({label, type, placeholder, id, value}: Props){
+    const [self, setSelf] = useState<string | undefined>("" || value)
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSelf(e.target.value);
+    }
+
     return(
         <div className={style.container}>
             <label htmlFor={id}>{label}</label>
-		    <input type={type} placeholder={placeholder} name={id} id={id} value={value || ""} onChange={onChange} />
+		    <input type={type} placeholder={placeholder} name={id} id={id} value={value || self} onChange={handleChange} />
         </div>
     )
 }
