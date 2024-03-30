@@ -1,12 +1,11 @@
 import React, { useRef, useEffect } from "react";
-import BudgetTable from "@/components/BudgetTable/BudgetTable";
-import Title from "@/components/Title/Title";
+import { budgetProductsTable, reducedProductsTable } from "@/data/tables";
 import useBudget from "@/hooks/useBudget";
-import style from "./style.module.css";
+import Title from "@/components/Title/Title";
 import InputLabel from "@/components/atoms/input-label/input-label";
 import MainButton from "@/components/atoms/main-button/main-button";
 import ProductTable from "@/components/molecules/product-table/product-table";
-import { reducedProductsTable } from "@/data/tables";
+import style from "./style.module.css";
 
 function BudgetSection() {
 	const { products, budget, addProduct, subtractProduct, getTotal, setPriceAndClient, createBudget } = useBudget();
@@ -44,12 +43,7 @@ function BudgetSection() {
 					<ProductTable products={products} table={reducedProductsTable} onClick={(code: string) => addProduct(code)} />
 				</div>
 				<div className={style.table} ref={budgetTableRef}>
-					<ProductTable products={budget.products} table={reducedProductsTable} onClick={(code: string) => subtractProduct(code)} />
-					{/* <BudgetTable
-						products={budget.products}
-						price={budget.price}
-						onClick={(code: string) => subtractProduct(code)}
-					/> */}
+					<ProductTable products={budget.products} table={budgetProductsTable} onClick={(code: string) => subtractProduct(code)} />
 				</div>
 			</div>
 			<div

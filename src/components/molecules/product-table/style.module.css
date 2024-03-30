@@ -1,7 +1,7 @@
 .table {
     width: 100%;
-    margin: 10px;
 	border-collapse: collapse;
+	user-select: none;
 }
 
 .tableHeader {
@@ -9,21 +9,25 @@
 	font-weight: bold;
 	padding: 8px;
 	text-align: left;
+	user-select: none;
 }
 
 .tableCell {
 	padding: 8px;
 	border-bottom: 1px solid #ccc;
+	user-select: none;
 }
 
 .tableRow {
 	height: 45px;
 	transition: all 0.3s ease;
 	cursor: pointer;
+	user-select: none;
 }
 
 .tableRow:hover {
 	transform: scale(1.02);
 	font-weight: 700;
 	position: relative;
+	user-select: none;
 }

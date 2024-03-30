@@ -46,14 +46,13 @@ function useProducts() {
 		setProducts(data || []);
 	}
 
-	const getProductByCode = async (code: string): Promise<Product | null> => {
+	const getProductByCode = async (code: string) => {
 		try {
 			const response: AxiosResponse<Product> = await instance.get("/products/get-by-code", {params: {code}});
 			return response.data;
 		} 
 		catch (error) {
 			alert("Error encontrando el producto con el código: " + code);
-			return null;
 		}
 	};
 
@@ -90,10 +89,11 @@ function useProducts() {
 		}
 	};
 
-	const deleteProduct = async (id: string): Promise<Product | null> => {
+	const deleteProduct = async (id: string) => {
 		try {
 			const response: AxiosResponse<Product> = await instance.delete(id);
 			await fetchProducts();
+			
 			return response.data || null;
 		} 
 		catch (error) {

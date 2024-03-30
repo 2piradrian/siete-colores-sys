@@ -3,6 +3,7 @@ export type BudgetProduct = {
 	name: string;
 	quantity: number;
 	price: number;
+	quantityPrice: number;
 };
 
 export type Budget = {
