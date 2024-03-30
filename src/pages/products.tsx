@@ -1,4 +1,4 @@
-import ProductList from "@/components/organism/product-list/product-list";
+import ProductList from "@/components/organisms/product-list/product-list";
 import AppLayout from "@/layout/AppLayout";
 import React from "react";
 

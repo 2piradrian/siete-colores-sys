@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import { budgetProductsTable, reducedProductsTable } from "@/data/tables";
 import useBudget from "@/hooks/useBudget";
 import Title from "@/components/atoms/title/title";

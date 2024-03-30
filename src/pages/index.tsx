@@ -1,4 +1,4 @@
-import Statistics from "@/components/organism/statistics/statistics";
+import Statistics from "@/components/organisms/statistics/statistics";
 import AppLayout from "@/layout/AppLayout";
 
 export default function Home() {

@@ -1,5 +1,5 @@
 import AppLayout from "@/layout/AppLayout";
-import BudgetList from "@/components/organism/budget-list/budget-list";
+import BudgetList from "@/components/organisms/budget-list/budget-list";
 import React from "react";
 
 function AllBudgets() {
