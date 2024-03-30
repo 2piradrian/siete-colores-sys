@@ -35,16 +35,14 @@ export default function useBudget() {
 
 	const createBudget = async () => {
 		try {
-			if (budget.products.length === 0 || !budget.price || !budget.client) {
-				throw new Error("No se puede crear un presupuesto sin productos, precio o cliente");
+			if (budget.products.length === 0 || !budget.client) {
+				throw new Error("No se puede crear un presupuesto sin productos o cliente");
 			}
 
-			const response: AxiosResponse<Product> = await instance.post("", { budget });
-			if (response.data) {
-				throw new Error("Presupuesto creado con éxito");
-			}
-
-			return response.data;
+			await instance.post("/budgets/create", { products: budget.products, client: budget.client }, {headers: {"authorization": env.SECRET}});
+			
+			alert("Presupuesto creado con éxito");
+			
 		} 
 		catch (error) {
 			alert("Error al crear el presupuesto: " + error);
@@ -149,8 +147,8 @@ export default function useBudget() {
 		return total.toFixed(2);
 	};
 
-	const setPriceAndClient = (price: number, client: string) => {
-		setBudget({ ...budget, price, client });
+	const setClientOnBudget = (client: string) => {
+		setBudget({ ...budget, client });
 	};
 
 	return {
@@ -159,7 +157,7 @@ export default function useBudget() {
 		addProduct,
 		subtractProduct,
 		getTotal,
-		setPriceAndClient,
+		setClientOnBudget,
 		createBudget,
 		budgetList,
 		getBudget,

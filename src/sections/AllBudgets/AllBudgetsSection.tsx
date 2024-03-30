@@ -1,4 +1,4 @@
-import AllBudgetsTable from "@/components/AllBudgetsTable/AllBudgetsTable";
+import AllBudgetsTable from "@/components/molecules/budgets-table/budgets-table";
 import Title from "@/components/Title/Title";
 import useBudget from "@/hooks/useBudget";
 
@@ -6,7 +6,7 @@ function AllBudgetsSection() {
 	const { budgetList } = useBudget();
 
 	return (
-		<div className="bigcontainer">
+		<div className="container">
 			<Title title="Lista de presupuestos" />
 			<AllBudgetsTable budgets={budgetList} />
 		</div>

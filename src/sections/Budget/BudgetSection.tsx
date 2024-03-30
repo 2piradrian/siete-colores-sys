@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { budgetProductsTable, reducedProductsTable } from "@/data/tables";
 import useBudget from "@/hooks/useBudget";
 import Title from "@/components/Title/Title";
@@ -8,7 +8,8 @@ import ProductTable from "@/components/molecules/product-table/product-table";
 import style from "./style.module.css";
 
 function BudgetSection() {
-	const { products, budget, addProduct, subtractProduct, getTotal, setPriceAndClient, createBudget } = useBudget();
+	const { products, budget, addProduct, subtractProduct, getTotal, setClientOnBudget, createBudget } = useBudget();
+	const [client, setClient] = useState<string>("");
 
 	const budgetTableRef = useRef<HTMLDivElement | null>(null);
 
@@ -20,12 +21,18 @@ function BudgetSection() {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		const BudgetData = Object.fromEntries(new FormData(e.currentTarget));
-		if (!BudgetData.client || !BudgetData.price) {
-			return alert("Debes llenar todos los campos");
+
+		if (client === "") {
+			alert("Debe ingresar un cliente");
+			return;
 		}
-		setPriceAndClient(Number(BudgetData.price), BudgetData.client.toString());
+
+		setClientOnBudget(client);
 		alert("Datos cargados correctamente");
+	};
+
+	const onClientChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setClient(e.target.value);
 	};
 
 	return (
@@ -33,7 +40,7 @@ function BudgetSection() {
 			<Title title="Nuevo Presupuesto" />
 			<form onSubmit={handleSubmit}>
 				<div className={style.preform}>
-					<InputLabel id="price" type="text" label="Cliente" placeholder="Cotillon" value="" onChange={()=>{}} />
+					<InputLabel id="price" type="text" label="Cliente" placeholder="Cotillon" value={client} onChange={onClientChange} />
 					<MainButton text="Cargar datos" type="submit" onClick={()=>{}} />
 				</div>
 			</form>

@@ -8,7 +8,7 @@ type Props = {
 	state: boolean;
 };
 
-function NavRoutes({ state }: Props) {
+export default function NavRoutes({ state }: Props) {
 	return (
 		<div className={style.routes}>
 			<NavItem icon={<AiFillHome />} name="Home" route="/" state={state} />
@@ -19,5 +19,3 @@ function NavRoutes({ state }: Props) {
 		</div>
 	);
 }
-
-export default NavRoutes;
