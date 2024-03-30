@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 function Budget() {
 	const { getBudget } = useBudget();
-	const [budget, setBudget] = useState<Budget | null>({} as Budget);
+	const [budget, setBudget] = useState<Budget | undefined>({} as Budget);
 
 	// id from url params
 	const router = useRouter();
@@ -29,7 +29,6 @@ function Budget() {
 		<TableToPrint
 			id={id}
 			products={budget?.products}
-			price={budget?.price}
 			total={budget?.total}
 		/>
 	) : (

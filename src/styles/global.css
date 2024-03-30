@@ -19,6 +19,7 @@ body {
 	width: 100%;
 	background-color: var(--background);
 	overflow: scroll;
+	overflow-x: hidden;
 }
 
 html * {

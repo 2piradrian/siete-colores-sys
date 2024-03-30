@@ -1,5 +1,5 @@
 import useProducts from "./useProducts";
-import { Budget, Product } from "@/types/types";
+import { Budget } from "@/types/types";
 import { useEffect, useState } from "react";
 import { AxiosResponse } from "axios";
 import { instance } from "@/adapters/instance";
@@ -13,7 +13,7 @@ export default function useBudget() {
 		id: "",
 		client: "",
 		price: 0,
-		createdAt: new Date(),
+		date: new Date(),
 		products: [],
 		total: 0,
 	});
@@ -51,7 +51,7 @@ export default function useBudget() {
 
 	const getBudget = async (id: string) => {
 		try {
-			const response: AxiosResponse<Budget> = await instance.get(`/${id}`);
+			const response: AxiosResponse<Budget> = await instance.get("/budgets/get-by-id", {params: { id }, headers: {"authorization": env.SECRET}});
 
 			return response.data;
 		} 
