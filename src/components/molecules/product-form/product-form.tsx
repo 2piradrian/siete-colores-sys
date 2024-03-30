@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Product } from "@/types/types";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import InputLabel from "@/components/atoms/input-label/input-label";
@@ -23,6 +23,18 @@ export default function ProductForm({ empty, product, setOpen, onSubmit, onDelet
         size: product?.size || "",
         price: product?.price || 0,
     });
+
+    useEffect(() => {
+        if (product) {
+            setFormData({
+                code: product.code, 
+                name: product.name, 
+                category: product.category, 
+                size: product.size,
+                price: product.price,
+            });
+        }
+    }, [product]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;

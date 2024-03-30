@@ -62,7 +62,7 @@ export default function useBudget() {
 
 	const deleteBudget = async (id: string) => {
 		try {
-			const response: AxiosResponse<Budget> = await instance.delete(`/${id}`);
+			const response: AxiosResponse<Budget> = await instance.delete("/budgets/delete", {params: { id }, headers: {"authorization": env.SECRET}});
 			alert("Presupuesto eliminado con éxito");
 
 			return response.data;

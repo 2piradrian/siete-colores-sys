@@ -66,10 +66,12 @@ function useProducts() {
 			}
 			await instance.post("/products/create", product, {headers: {"authorization": env.SECRET}});
 			updateList()
+			
 			return true;
 		} 
 		catch (error) {
 			alert("Error creando el producto: " + error);
+
 			return false;
 		}
 	};
@@ -81,24 +83,27 @@ function useProducts() {
 		try {
 			await instance.put("/products/update", product, {headers: {"authorization": env.SECRET}});
 			updateList()
+
 			return true;
 		} 
 		catch (error) {
 			alert("Error actualizando el producto: " + error);
+
 			return false;
 		}
 	};
 
-	const deleteProduct = async (id: string) => {
+	const deleteProduct = async (code: string) => {
 		try {
-			const response: AxiosResponse<Product> = await instance.delete(id);
-			await fetchProducts();
-			
-			return response.data || null;
+			await instance.delete("products/delete", {params: {code}, headers: {"authorization": env.SECRET}});
+			updateList()
+
+			return true;
 		} 
 		catch (error) {
 			alert("Error eliminando el producto: " + error);
-			return null;
+
+			return false;
 		}
 	};
 

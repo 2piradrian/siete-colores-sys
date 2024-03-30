@@ -22,7 +22,6 @@ function TableToPrint({ id, products, total }: Props) {
 	const handleDelete = () => {
 		deleteBudget(id as string);
 		router.replace("/allbudgets");
-		router.reload();
 	};
 
 	return (
