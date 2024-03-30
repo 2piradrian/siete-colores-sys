@@ -2,6 +2,7 @@
 	height: 100%;
 	width: 100%;
 	display: flex;
+	overflow-x: hidden;
 }
 
 .table {
@@ -15,6 +16,7 @@
 	position: relative;
 	overflow-y: scroll;
 	scroll-behavior: smooth;
+	overflow-x: hidden;
 }
 
 .preform {

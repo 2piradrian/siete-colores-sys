@@ -1,4 +1,4 @@
-import Sidebar from "@/components/Sidebar/Sidebar";
+import Sidebar from "@/components/molecules/sidebar/Sidebar";
 import Head from "next/head";
 
 type Props = {
