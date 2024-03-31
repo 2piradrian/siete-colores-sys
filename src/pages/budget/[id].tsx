@@ -25,11 +25,16 @@ function Budget() {
 	}, [id]);
 
 	return budget?.products ? (
+		<>
+		<head>
+			<title key="title">{"Siete Colores | Presupuesto"}</title>
+		</head>
 		<PrintTable
 			id={id}
 			products={budget?.products}
 			total={budget?.total}
-		/>
+			/>
+		</>
 	) : (
 		<div>Cargando...</div>
 	);
