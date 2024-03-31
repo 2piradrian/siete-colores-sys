@@ -10,7 +10,7 @@ import FAButton from "@/components/atoms/fa-button/fa-button";
 import style from "./style.module.css";
 
 export default function ProductList() {
-	const { products, setSearch, getProductByCode, updateProduct, createProduct, deleteProduct } = useProducts();
+	const { products, setSearch, updateProduct, createProduct, deleteProduct } = useProducts();
 
 	const [openUpdate, setOpenUpdate] = useState(false);
 	const [openCreate, setOpenCreate] = useState(false);
@@ -19,11 +19,8 @@ export default function ProductList() {
 
 	const handleForm = async (code: string) => {
 		setOpenUpdate(true);
-		const productDB = await getProductByCode(code);
-
-		if (productDB) {
-			setProduct(productDB);
-		}
+		const product = products.filter((product) => product.code === code)[0];
+		setProduct(product);
 	};
 
 	return (
@@ -35,7 +32,7 @@ export default function ProductList() {
 					<ProductTable products={products} onClick={handleForm} table={allProductsTable} />
 				)}
 			</div>
-			{(openUpdate) && (
+			{openUpdate && (
 				<ProductForm 
 					empty={false} 
 					product={product} 
