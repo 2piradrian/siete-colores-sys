@@ -16,6 +16,7 @@ export const categories = [
     "Profesiones",
     "Scrapers",
     "Sellos",
+    "Rodillos",
     "Texturizadores",
     "Toppers",
     "Transportes",
